@@ -1,45 +1,97 @@
 package com.boleteria.model;
-import java.util.List;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * Compra realizada por un titular. Los totales se calculan a partir de los
+ * asientos.
+ */
 public class Compra {
 
-    private String cedulaComprador; // Cambiado a String por si acaso, o déjalo en int si tu lógica lo requiere
-    private String nombreComprador;
-    private String correoComprador;
-    private List<Asiento> asientosSeleccionados;
-    private double subtotal;
-    private double servicio;
-    private double total;
+    private String idCompra, idEvento, cedulaComprador, nombreComprador, correoComprador, fechaCompra;
+    private List<String> codigosAsientos;
+    private double subtotal, servicio, total;
 
-    // CORRECCIÓN: El constructor debe llamarse igual que la clase (Compra)
-    public Compra(String cedula, String nombre, String correo, List<Asiento> asientosSeleccionados) {
-        this.nombreComprador = nombre;
+    public Compra(String idEvento, String cedula, String nombre, String correo, List<Asiento> asientos) {
+        this("CMP-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase(), idEvento, cedula, nombre, correo, codigos(asientos), subtotalDe(asientos), null);
+    }
+
+    public Compra(String idCompra, String idEvento, String cedula, String nombre, String correo, List<String> codigos, double subtotal, String fechaCompra) {
+        this.idCompra = idCompra;
+        this.idEvento = idEvento;
         this.cedulaComprador = cedula;
+        this.nombreComprador = nombre;
         this.correoComprador = correo;
-        this.asientosSeleccionados = asientosSeleccionados;
-        calcularTotales();
+        this.codigosAsientos = new ArrayList<>(codigos);
+        this.subtotal = subtotal;
+        this.servicio = Math.round(subtotal * 0.10 * 100.0) / 100.0;
+        this.total = subtotal + servicio;
+        this.fechaCompra = fechaCompra == null ? LocalDateTime.now().toString() : fechaCompra;
     }
 
-    private void calcularTotales() {
-        this.subtotal = 0.0;
-        for (Asiento asiento : asientosSeleccionados) {
-            this.subtotal += asiento.getPrecio(); // Asegúrate de tener getPrecio() en Asiento.java
-        }
-        this.servicio = this.subtotal * 0.10;
-        this.total = this.subtotal + this.servicio;
+    private static List<String> codigos(List<Asiento> a) {
+        List<String> c = new ArrayList<>();
+        for (Asiento x : a) {
+            c.add(x.getCodigoAsiento());
+        
+        }return c;
     }
 
-    // Getters para mostrar el resumen de la compra
-    public double getSubtotal() { return subtotal; }
-    public double getServicio() { return servicio; }
-    public double getTotal() { return total; }
-    
+    private static double subtotalDe(List<Asiento> a) {
+        double s = 0;
+        for (Asiento x : a) {
+            s += x.getPrecio();
+        
+        }return s;
+    }
+
+    public String getIdCompra() {
+        return idCompra;
+    }
+
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    public String getCedulaComprador() {
+        return cedulaComprador;
+    }
+
+    public String getNombreComprador() {
+        return nombreComprador;
+    }
+
+    public String getCorreoComprador() {
+        return correoComprador;
+    }
+
+    public List<String> getCodigosAsientos() {
+        return codigosAsientos;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public double getServicio() {
+        return servicio;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public String getFechaCompra() {
+        return fechaCompra;
+    }
+
     public void mostrarResumen() {
-        System.out.println("--- Resumen de Compra ---");
-        System.out.println("Comprador: " + nombreComprador + " (Doc: " + cedulaComprador + ")");
-        System.out.println("Asientos seleccionados: " + asientosSeleccionados.size());
-        System.out.println("Subtotal: $" + subtotal);
-        System.out.println("Servicio (10%): $" + servicio);
-        System.out.println("Total a pagar: $" + total);
+        System.out.println("\n--- Resumen de compra ---");
+        System.out.println("ID: " + idCompra + " | Titular: " + nombreComprador + " | Documento: " + cedulaComprador);
+        System.out.println("Asientos: " + String.join(", ", codigosAsientos));
+        System.out.printf("Subtotal: $%.0f%nServicio (10%%): $%.0f%nTotal: $%.0f%n", subtotal, servicio, total);
     }
 }
