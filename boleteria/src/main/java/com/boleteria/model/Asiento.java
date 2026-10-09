@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.boleteria.exception.DatosInvalidosException;
+
 /**
  * Representa un asiento de un evento.
  */

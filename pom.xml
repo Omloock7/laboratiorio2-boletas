@@ -43,6 +43,8 @@
         </dependency>
     </dependencies>
     <build>
+        <sourceDirectory>boleteria/src/main/java</sourceDirectory> 
+        <testSourceDirectory>boleteria/src/test/java</testSourceDirectory> 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
