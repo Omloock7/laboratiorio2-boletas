@@ -1,4 +1,3 @@
-
 package com.boleteria.model;
 
 import java.io.BufferedReader;
@@ -13,22 +12,17 @@ import java.util.List;
  */
 public class Asiento {
 
-    private String idEvento;
-    private String codigoAsiento;
-    private String localidad;
-    private String fila;
+
+    private String idEvento, codigoAsiento, localidad, fila;
     private int numero;
     private double precio;
 
-    public Asiento(String idEvento, String codigoAsiento,
-                   String localidad, String fila,
-                   int numero, double precio) {
+    public Asiento(String idEvento, String codigoAsiento, String localidad, String fila, int numero, double precio) {
         this.idEvento = idEvento;
         this.codigoAsiento = codigoAsiento;
         this.localidad = localidad;
         this.fila = fila;
         this.numero = numero;
-        this.precio = precio;
     }
 
     public String getIdEvento() {
@@ -56,77 +50,44 @@ public class Asiento {
     }
 
     /**
-     * Lee los asientos desde data/asientos.csv.
+     * Lee los asientos del CSV y reporta la fila problemática sin ocultar el
+     * error.
      */
-    public static List<Asiento> cargarAsientos() throws IOException {
-        List<Asiento> asientos = new ArrayList<>();
+    public static List<Asiento> cargarAsientos() throws IOException, DatosInvalidosException {
+        return cargarAsientos(Path.of("data", "asientos.csv"));
+    }
 
-        Path ruta = Path.of("data", "asientos.csv");
-
-        try (BufferedReader lector = Files.newBufferedReader(ruta)) {
-            String linea;
-            boolean primeraLinea = true;
-            int numeroLinea = 0;
-
-            while ((linea = lector.readLine()) != null) {
-                numeroLinea++;
-
+    public static List<Asiento> cargarAsientos(Path ruta) throws IOException, DatosInvalidosException {
+        List<Asiento> lista = new ArrayList<>();
+        try (BufferedReader br = Files.newBufferedReader(ruta)) {
+            String linea = br.readLine();
+            int n = 1;
+            if (linea == null) {
+                throw new DatosInvalidosException("El CSV de asientos está vacío.");
+            }
+            while ((linea = br.readLine()) != null) {
+                n++;
                 if (linea.isBlank()) {
                     continue;
+
                 }
-
-                if (primeraLinea) {
-                    primeraLinea = false;
-                    continue; // Saltar encabezado
+                String[] d = linea.split(";", -1);
+                if (d.length != 6) {
+                    throw new DatosInvalidosException("Formato incorrecto en asientos.csv, línea " + n);
                 }
-
-                String[] datos = linea.split(";", -1);
-
-                if (datos.length != 6) {
-                    throw new IOException(
-                        "Formato incorrecto en asientos.csv, línea "
-                        + numeroLinea
-                    );
-                }
-
                 try {
-                    String idEvento = datos[0].trim();
-                    String codigo = datos[1].trim();
-                    String localidad = datos[2].trim();
-                    String fila = datos[3].trim();
-                    int numero = Integer.parseInt(datos[4].trim());
-                    double precio = Double.parseDouble(datos[5].trim());
-
-                    if (idEvento.isEmpty()
-                            || codigo.isEmpty()
-                            || localidad.isEmpty()
-                            || fila.isEmpty()
-                            || numero <= 0
-                            || precio < 0) {
-                        throw new IllegalArgumentException(
-                            "Hay datos vacíos o valores inválidos."
-                        );
+                    String evento = d[0].trim(), codigo = d[1].trim(), loc = d[2].trim(), fila = d[3].trim();
+                    int num = Integer.parseInt(d[4].trim());
+                    double precio = Double.parseDouble(d[5].trim());
+                    if (evento.isEmpty() || codigo.isEmpty() || loc.isEmpty() || fila.isEmpty() || num < 1 || precio < 0) {
+                        throw new IllegalArgumentException("Campos vacíos o valores negativos");
                     }
-
-                    asientos.add(new Asiento(
-                        idEvento, codigo, localidad,
-                        fila, numero, precio
-                    ));
-
-                } catch (NumberFormatException e) {
-                    throw new IOException(
-                        "Número o precio inválido en asientos.csv, línea "
-                        + numeroLinea, e
-                    );
+                    lista.add(new Asiento(evento, codigo, loc, fila, num, precio));
                 } catch (IllegalArgumentException e) {
-                    throw new IOException(
-                        "Datos inválidos en asientos.csv, línea "
-                        + numeroLinea, e
-                    );
+                    throw new DatosInvalidosException("Dato inválido en asientos.csv, línea " + n + ": " + e.getMessage(), e);
                 }
             }
         }
-
-        return asientos;
+        return lista;
     }
 }
