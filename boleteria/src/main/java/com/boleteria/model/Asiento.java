@@ -57,8 +57,13 @@ public class Asiento {
      * error.
      */
     public static List<Asiento> cargarAsientos() throws IOException, DatosInvalidosException {
-        return cargarAsientos(Path.of("data", "asientos.csv"));
+    Path ruta = Path.of("data", "asientos.csv");
+    if (!Files.exists(ruta)) {
+        // Si no existe en el directorio raíz, busca dentro de la subcarpeta del subproyecto
+        ruta = Path.of("laboratiorio2-boletas", "data", "asientos.csv");
     }
+    return cargarAsientos(ruta);
+}
 
     public static List<Asiento> cargarAsientos(Path ruta) throws IOException, DatosInvalidosException {
         List<Asiento> lista = new ArrayList<>();

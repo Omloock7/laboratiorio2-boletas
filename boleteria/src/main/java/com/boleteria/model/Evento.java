@@ -50,8 +50,13 @@ public class Evento {
     }
 
     public static List<Evento> cargarEventos() throws IOException, DatosInvalidosException {
-        return cargarEventos(Path.of("data", "eventos.csv"));
+    Path ruta = Path.of("data", "eventos.csv");
+    if (!Files.exists(ruta)) {
+        // Si no se encuentra en la raíz del workspace, busca dentro de la carpeta del subproyecto
+        ruta = Path.of("laboratiorio2-boletas", "data", "eventos.csv");
     }
+    return cargarEventos(ruta);
+}
 
     public static List<Evento> cargarEventos(Path ruta) throws IOException, DatosInvalidosException {
         List<Evento> out = new ArrayList<>();
