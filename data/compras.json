@@ -12,5 +12,33 @@
     "subtotal": 0.0,
     "servicio": 0.0,
     "total": 0.0
+  },
+  {
+    "idCompra": "CMP-511B8FA6",
+    "idEvento": "EV002",
+    "cedulaComprador": "10939293",
+    "nombreComprador": "Juan Jose",
+    "correoComprador": "pepito@gmail.com",
+    "fechaCompra": "2026-10-13T12:32:30.767448400",
+    "codigosAsientos": [
+      "ORI-B-01"
+    ],
+    "subtotal": 140000.0,
+    "servicio": 14000.0,
+    "total": 154000.0
+  },
+  {
+    "idCompra": "CMP-D74240AE",
+    "idEvento": "EV001",
+    "cedulaComprador": "1234468U",
+    "nombreComprador": "JU4N MARI0",
+    "correoComprador": "juan@gmail.com",
+    "fechaCompra": "2026-10-13T12:37:10.464407800",
+    "codigosAsientos": [
+      "PRE-B-01"
+    ],
+    "subtotal": 250000.0,
+    "servicio": 25000.0,
+    "total": 275000.0
   }
 ]

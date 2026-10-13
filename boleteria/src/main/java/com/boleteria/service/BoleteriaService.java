@@ -82,6 +82,12 @@ public class BoleteriaService {
         
         }if (codigos == null || codigos.isEmpty()) {
             throw new ReglaNegocioException("Debe seleccionar al menos un asiento.");
+
+        }if (!nombre.trim().matches("[\\p{L}\\s]+")) {
+             throw new ReglaNegocioException("El nombre solo puede contener letras y espacios.");
+             
+        }if (!documento.trim().matches("[0-9]+")) {
+             throw new ReglaNegocioException("El documento solo puede contener números.");
         
         }Set<String> unicos = new HashSet<>(codigos);
         if (unicos.size() != codigos.size()) {

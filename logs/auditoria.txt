@@ -2,3 +2,10 @@
 2026-10-09T20:37:33.244857800 | COMPRA OK | CMP-6829F90E | evento=EV001 | titular=ARCANGEL | asientos=VIP-A-04
 2026-10-13T12:14:42.258400400 | ERROR | El correo no tiene un formato válido.
 2026-10-13T12:17:42.757762100 | ERROR | El correo no tiene un formato válido.
+2026-10-13T12:32:30.791799400 | COMPRA OK | CMP-511B8FA6 | evento=EV002 | titular=Juan Jose | asientos=ORI-B-01
+2026-10-13T12:35:11.928729800 | ERROR | Asiento inválido para este evento: VIP-A_05
+2026-10-13T12:35:44.116855800 | ERROR | No existe el evento EV0001
+2026-10-13T12:37:10.471424300 | COMPRA OK | CMP-D74240AE | evento=ev001 | titular=JU4N MARI0 | asientos=PRE-B-01
+2026-10-13T13:08:41.240084300 | ERROR | No existe el evento EVOO1
+2026-10-13T13:09:37.414111800 | ERROR | El nombre solo puede contener letras y espacios.
+2026-10-13T13:10:32.648485100 | ERROR | El documento solo puede contener números.

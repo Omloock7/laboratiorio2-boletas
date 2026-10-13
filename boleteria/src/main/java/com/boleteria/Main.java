@@ -93,10 +93,23 @@ public class Main {
         
         }System.out.print("Códigos de asiento separados por coma: ");
         List<String> codigos = Arrays.stream(sc.nextLine().split(",")).map(String::trim).filter(x -> !x.isEmpty()).toList();
-        System.out.print("Nombre completo: ");
-        String nombre = sc.nextLine().trim();
-        System.out.print("Documento: ");
-        String doc = sc.nextLine().trim();
+        String nombre;
+do {
+    System.out.print("Nombre completo (solo letras): ");
+    nombre = sc.nextLine().trim();
+    if (!nombre.matches("[\\p{L}\\s]+")) {
+        System.out.println("El nombre solo puede contener letras y espacios.");
+    }
+    } while (!nombre.matches("[\\p{L}\\s]+"));
+
+   String doc;
+   do {
+    System.out.print("Documento (solo números): ");
+    doc = sc.nextLine().trim();
+    if (!doc.matches("[0-9]+")) {
+        System.out.println("El documento solo puede contener números.");
+    }
+    } while (!doc.matches("[0-9]+"));
         System.out.print("Correo: ");
         String correo = sc.nextLine().trim();
         Compra c = s.comprar(id, doc, nombre, correo, codigos);
