@@ -1,0 +1,4 @@
+2026-10-09T20:36:42.197576100 | ERROR | El correo no tiene un formato válido.
+2026-10-09T20:37:33.244857800 | COMPRA OK | CMP-6829F90E | evento=EV001 | titular=ARCANGEL | asientos=VIP-A-04
+2026-10-13T12:14:42.258400400 | ERROR | El correo no tiene un formato válido.
+2026-10-13T12:17:42.757762100 | ERROR | El correo no tiene un formato válido.

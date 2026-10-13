@@ -25,6 +25,7 @@ public class Asiento {
         this.localidad = localidad;
         this.fila = fila;
         this.numero = numero;
+        this.precio = precio;
     }
 
     public String getIdEvento() {

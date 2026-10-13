@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "idCompra": "CMP-6829F90E",
+    "idEvento": "EV001",
+    "cedulaComprador": "100001232",
+    "nombreComprador": "ARCANGEL",
+    "correoComprador": "PEPITOKUM@GMAIL.COM",
+    "fechaCompra": "2026-10-09T20:37:33.229918300",
+    "codigosAsientos": [
+      "VIP-A-04"
+    ],
+    "subtotal": 0.0,
+    "servicio": 0.0,
+    "total": 0.0
+  }
+]
