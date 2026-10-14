@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\exception\DatosInvalidosException.java
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\exception\ReglaNegocioException.java
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\Main.java
@@ -9,3 +10,16 @@ C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\servi
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\BoleteriaService.java
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\PdfQrService.java
 C:\Users\joser\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\ReporteService.java
+=======
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\exception\DatosInvalidosException.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\exception\ReglaNegocioException.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\Main.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\model\Asiento.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\model\Compra.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\model\Evento.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\model\ReporteEvento.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\ArchivoServicio.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\BoleteriaService.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\PdfQrService.java
+C:\Users\usuario\Desktop\Proyects\Proyecto-biblioteca-uni\laboratiorio2-boletas\boleteria\src\main\java\com\boleteria\service\ReporteService.java
+>>>>>>> c0a094507cc0a1c79c04e65b1d0a739dce873d06
